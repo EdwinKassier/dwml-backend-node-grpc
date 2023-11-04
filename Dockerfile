@@ -19,6 +19,9 @@ COPY . .
 # Expose the gRPC port (replace with your actual port if different)
 EXPOSE 443
 
+# Update Prisma
+RUN npx prisma generate
+
 
 # Set the container's default command
 CMD [ "pnpm", "start" ]
