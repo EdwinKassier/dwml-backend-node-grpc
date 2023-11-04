@@ -58,7 +58,7 @@ server.addService(apiProto.API.service, {
 
 
 
-server.bindAsync('0.0.0.1:50051', grpc.ServerCredentials.createInsecure(), (error, port) => {
-  console.log('Server running at http://127.0.0.1:50051');
+server.bindAsync('0.0.0.0:50051', grpc.ServerCredentials.createInsecure(), (error, port) => {
+  console.log('Server running at http://0.0.0.0:50051');
   server.start();
 });
