@@ -5,7 +5,7 @@ FROM node:lts-alpine
 WORKDIR /app
 
 # Copy the package.json and package-lock.json files to the container
-COPY package*.json ./
+COPY package.json pnpm-lock.yaml ./
 
 # Install pnpm
 RUN npm install -g pnpm
@@ -14,7 +14,7 @@ RUN npm install -g pnpm
 RUN pnpm install
 
 # Install Prisma CLI
-RUN npm install -g prisma
+RUN pnpm install -g prisma
 
 # Copy the rest of the app's files to the container
 COPY . .
@@ -24,12 +24,6 @@ EXPOSE 443
 
 # Update Prisma
 RUN npx prisma generate
-
-# Run prisma migrate
-RUN npx prisma migrate reset
-
-# Erroneous migrate
-RUN npx prisma migrate deploy
 
 # Set the container's default command
 CMD [ "pnpm", "start" ]
