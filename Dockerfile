@@ -14,7 +14,7 @@ RUN npm install -g pnpm
 RUN pnpm install
 
 # Install Prisma CLI
-RUN pnpm install -g prisma
+RUN pnpm install prisma
 
 # Copy the rest of the app's files to the container
 COPY . .
