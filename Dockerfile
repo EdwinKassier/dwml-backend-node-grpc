@@ -23,5 +23,9 @@ EXPOSE 443
 RUN npx prisma generate
 
 
+# Run prisma migrate
+RUN npx prisma migrate
+
+
 # Set the container's default command
 CMD [ "pnpm", "start" ]

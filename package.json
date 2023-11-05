@@ -5,7 +5,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "npx prisma generate && nodemon src/server/index.js --watch src/server",
+    "start": " nodemon src/server/index.js --watch src/server",
     "start:client": "nodemon src/client/index.ts --watch src/client",
     "proto:build": "cd proto; buf build; cd ..",
     "codegen:buf": "cd proto; buf generate; cd ..",
