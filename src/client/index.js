@@ -14,7 +14,7 @@ var packageDefinition = protoLoader.loadSync(PROTO_PATH, options);
 const apiService = grpc.loadPackageDefinition(packageDefinition).API;
 
 const client = new apiService(
-  "localhost:50051",
+  "localhost:443",
   grpc.credentials.createInsecure()
 );
 

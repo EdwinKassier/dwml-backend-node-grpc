@@ -1,10 +1,23 @@
 import * as grpc from '@grpc/grpc-js';
 const PROTO_PATH = "proto/services/api/v1/api.proto";
 import * as protoLoader from '@grpc/proto-loader';
+import express from 'express';
 
 import DataCache from '../utils/data_cache.js';
 import DataCollector from '../utils/data_collector.js';
 import GraphCreator from '../utils/graph_creator.js';
+
+const healthCheckApp = express();
+const HTTP_PORT = 8080;
+
+const healthCheckServer = healthCheckApp.listen(HTTP_PORT, () => {
+  console.log(`HTTP health check server listening on port ${HTTP_PORT}`);
+});
+
+healthCheckApp.get('/health', (req, res) => {
+  // Implement a health check logic
+  res.sendStatus(200); // Service is healthy
+});
 
 const options = {
   keepCase: true,
@@ -58,7 +71,6 @@ server.addService(apiProto.API.service, {
 
 
 
-server.bindAsync('0.0.0.0:50051', grpc.ServerCredentials.createInsecure(), (error, port) => {
-  console.log('Server running at http://0.0.0.0:50051');
+server.bindAsync('[::]:443', grpc.ServerCredentials.createInsecure(), (error, port) => {
   server.start();
 });
