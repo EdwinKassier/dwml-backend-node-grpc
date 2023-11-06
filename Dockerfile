@@ -20,7 +20,7 @@ RUN pnpm install prisma
 COPY . .
 
 # Expose the gRPC port (replace with your actual port if different)
-EXPOSE 443
+EXPOSE 443 8080
 
 # Update Prisma
 RUN npx prisma generate

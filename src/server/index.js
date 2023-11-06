@@ -19,6 +19,11 @@ healthCheckApp.get('/health', (req, res) => {
   res.sendStatus(200); // Service is healthy
 });
 
+healthCheckApp.get('/', (req, res) => {
+  // Implement a health check logic
+  res.sendStatus(200); // Service is healthy
+});
+
 const options = {
   keepCase: true,
   longs: String,
