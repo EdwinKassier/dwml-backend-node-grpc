@@ -59,7 +59,7 @@ async function process_request(call) {
   }
 
 
-  return { message: result, graph_data: graph_data };
+  return { message: JSON.stringify(result), graph_data: graph_data };
 }
 
 server.addService(apiProto.API.service, {
